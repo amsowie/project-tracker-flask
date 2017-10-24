@@ -13,13 +13,12 @@ def get_student():
 
     github = request.args.get('github')
 
-    student_info = hackbright.get_student_by_github(github)
-    import pdb; pdb.set_trace()
-
+    first_name, last_name, github = hackbright.get_student_by_github(github)
+    
     html = render_template("student_info.html",
-                            first=student_info[0],
-                            last=student_info[1],
-                            github=student_info[2])
+                            first=first_name,
+                            last=last_name,
+                            github=github)
 
     return html
 
